@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Make sure your page supports utf-8 characterset. -->
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Probando</title>
+</head>
+<body>
+    <h1>Preguntas y Respuestas</h1>
+
+    <form id="qnaForm">
+        <label for="texto">Texto:</label><br>
+        <textarea id="texto" name="texto" rows="5" cols="50"></textarea><br><br>
+        <label for="pregunta">Pregunta:</label><br>
+        <input type="text" id="pregunta" name="pregunta"><br><br>
+        <input type="submit" value="Obtener respuesta">
+    </form>
+
+     <!-- Load TensorFlow.js. This is required to use the qna model. -->
+     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"> </script>
+     <!-- Load the qna model. -->
+     <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/qna"> </script>
+
+     <script>
+        document.getElementById('qnaForm').addEventListener('submit', e => {
+        e.preventDefault();
+
+            const texto = document.getElementById('texto').value;
+            const pregunta = document.getElementById('pregunta').value;
+
+            // Cargar el modelo con las preguntas y respuestas
+            qna.load().then(model => {
+                console.log(model)
+            // Realizar las preguntas y respuestas
+                model.findAnswers(pregunta, texto).then(answers => {
+                    console.log(answers);
+                    // Mostrar la respuesta en la consola
+                    console.log('Respuesta:', answers);
+                });
+            });
+        });
+     </script>
+</body>

@@ -40,38 +40,6 @@
 
     // TEXT  representa el cuerpo de la respuesta, SCORE indica el nivel de confianza, STARTINDEX es el índice del carácter inicial de la respuesta en el pasaje
     // ENDINDEx es el indece del caracter final de la respesta en el pasa
-
-
-    /* Modelo que no funciona da un array con un length[0]
-    html--
-    <h1>Preguntas y Respuestas</h1>
-    <form id="qnaForm">
-        <label for="texto">Texto:</label><br>
-        <textarea id="texto" name="texto" rows="5" cols="50"></textarea><br><br>
-        <label for="pregunta">Pregunta:</label><br>
-        <input type="text" id="pregunta" name="pregunta"><br><br>
-        <input type="submit" value="Obtener respuesta">
-    </form>
-
-
-    script--
-    document.getElementById('qnaForm').addEventListener('submit', e => {
-    e.preventDefault();
-
-        const texto = document.getElementById('texto').value;
-        const pregunta = document.getElementById('pregunta').value;
-
-            // Cargar el modelo con las preguntas y respuestas
-            qna.load().then(model => {
-                console.log(model)
-            // Realizar las preguntas y respuestas
-                model.findAnswers(pregunta, texto).then(answers => {
-                    console.log(answers);
-                    // Mostrar la respuesta en la consola
-                    console.log('Respuesta:', answers);
-                });
-            });
-    }); */
     </script>
 </body>
 </html>
