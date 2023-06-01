@@ -36,9 +36,9 @@
                 console.log(model)
             // Realizar las preguntas y respuestas
                 model.findAnswers(pregunta, texto).then(answers => {
-                    console.log(answers);
                     // Mostrar la respuesta en la consola
-                    console.log('Respuesta:', answers);
+                    console.log('Respuesta: ');
+                    console.log(answers)
                 });
             });
         });

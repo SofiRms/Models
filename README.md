@@ -9,5 +9,5 @@ Practica de modelo de Question and Answer
 ### Funciona
 Posicionarse en el archivo **funcional.html** y inicializar con **live_server**
 
-### No Funciona
-Posicionarse en el archivo **noFuncional.html** y inicializar con **live_server** 
+### Funciona
+Posicionarse en el archivo **index.html** y inicializar con **live_server**, para realizar preguntas el texto y las preguntas tienen que estar en ingles y bien explicado  
