@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Make sure your page supports utf-8 characterset. -->
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Probando</title>
+</head>
+<body>
+    <!-- Load TensorFlow.js. This is required to use the qna model. -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"> </script>
+    <!-- Load the qna model. -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/qna"> </script>
+
+    <!-- Place your code in the script tag below. You can also use an external .js file -->
+    <script>
+    // Notice there is no 'import' statement. 'qna' and 'tf' is
+    // available on the index-page because of the script tag above.
+    //Modelo que funciona
+    const passage = "Google LLC is an American multinational technology company that specializes in Internet-related services and products, which include online advertising technologies, search engine, cloud computing, software, and hardware. It is considered one of the Big Four technology companies, alongside Amazon, Apple, and Facebook. Google was founded in September 1998 by Larry Page and Sergey Brin while they were Ph.D. students at Stanford University in California. Together they own about 14 percent of its shares and control 56 percent of the stockholder voting power through supervoting stock. They incorporated Google as a California privately held company on September 4, 1998, in California. Google was then reincorporated in Delaware on October 22, 2002. An initial public offering (IPO) took place on August 19, 2004, and Google moved to its headquarters in Mountain View, California, nicknamed the Googleplex. In August 2015, Google announced plans to reorganize its various interests as a conglomerate called Alphabet Inc. Google is Alphabet's leading subsidiary and will continue to be the umbrella company for Alphabet's Internet interests. Sundar Pichai was appointed CEO of Google, replacing Larry Page who became the CEO of Alphabet.";
+    const question = "Who is the CEO of Google?";
+
+    // Load the model.
+    qna.load().then(model => {
+        // Find the answers
+        model.findAnswers(question, passage).then(answers => {
+        console.log('Answers: ', answers);
+        });
+    });
+
+    //Respuesta que da el qna. Ejemplo:
+    //[{
+    //      text: "Sundar Pichai",
+    //      startIndex: 1143,
+    //      endIndex: 1156,
+    //      score: 0.8380282521247864
+    //}]
+
+    // TEXT  representa el cuerpo de la respuesta, SCORE indica el nivel de confianza, STARTINDEX es el índice del carácter inicial de la respuesta en el pasaje
+    // ENDINDEx es el indece del caracter final de la respesta en el pasa
+
+
+    /* Modelo que no funciona da un array con un length[0]
+    html--
+    <h1>Preguntas y Respuestas</h1>
+    <form id="qnaForm">
+        <label for="texto">Texto:</label><br>
+        <textarea id="texto" name="texto" rows="5" cols="50"></textarea><br><br>
+        <label for="pregunta">Pregunta:</label><br>
+        <input type="text" id="pregunta" name="pregunta"><br><br>
+        <input type="submit" value="Obtener respuesta">
+    </form>
+
+
+    script--
+    document.getElementById('qnaForm').addEventListener('submit', e => {
+    e.preventDefault();
+
+        const texto = document.getElementById('texto').value;
+        const pregunta = document.getElementById('pregunta').value;
+
+            // Cargar el modelo con las preguntas y respuestas
+            qna.load().then(model => {
+                console.log(model)
+            // Realizar las preguntas y respuestas
+                model.findAnswers(pregunta, texto).then(answers => {
+                    console.log(answers);
+                    // Mostrar la respuesta en la consola
+                    console.log('Respuesta:', answers);
+                });
+            });
+    }); */
+    </script>
+</body>
+</html>
