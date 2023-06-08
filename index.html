@@ -11,16 +11,20 @@
 </head>
 <body>
     <div class="center">
-        <h1>Preguntas y Respuestas</h1>
 
         <form id="qnaForm">
+            <h1>Preguntas y Respuestas</h1>
             <label for="texto">Texto:</label><br>
             <textarea id="texto" name="texto" cols="30" rows="5"></textarea><br><br>
             <label for="pregunta">Pregunta:</label><br>
             <input type="text" id="pregunta" name="pregunta"><br><br>
-            <input type="submit" value="Obtener respuesta">
+            <button class="boton" type="buton" onclick="Envio()"> Obtener respuesta</button>
         </form>
+        <div id="respuesta" class="respuesta">
+
+        </div>
     </div>
+    
 
      <!-- Load TensorFlow.js. This is required to use the qna model. -->
      <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"> </script>
@@ -28,22 +32,26 @@
      <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/qna"> </script>
 
      <script>
-        document.getElementById('qnaForm').addEventListener('submit', e => {
-        e.preventDefault();
+        function Envio(){
+            document.getElementById('qnaForm').addEventListener('submit', e => {
+            e.preventDefault();
 
-            const texto = document.getElementById('texto').value;
-            const pregunta = document.getElementById('pregunta').value;
+                const texto = document.getElementById('texto').value;
+                const pregunta = document.getElementById('pregunta').value;
+            
 
-            // Cargar el modelo con las preguntas y respuestas
-            qna.load().then(model => {
-                console.log(model)
-            // Realizar las preguntas y respuestas
-                model.findAnswers(pregunta, texto).then(answers => {
-                    // Mostrar la respuesta en la consola
-                    console.log('Respuesta: ');
-                    console.log(answers)
+                // Cargar el modelo con las preguntas y respuestas
+                qna.load().then(model => { // devuelve una promesa, y cuando se resuelve, el modelo cargado se pasa como argumento a la función de devolución de llamada
+                    console.log(model)
+                // Realizar las preguntas y respuestas
+                    model.findAnswers(pregunta, texto).then(answers => { // realiza la búsqueda de respuestas en base a la pregunta y el texto proporcionados
+                        // Mostrar la respuesta en la consola
+                        console.log('Respuesta: ');
+                        console.log(answers)
+                        document.getElementById('respuesta').innerHTML= answers[0].text
+                    });
                 });
             });
-        });
+        };
      </script>
 </body>

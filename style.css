@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Source+Code+Pro:200');
 
 body  {
-    background-image: url('https://static.pexels.com/photos/414171/pexels-photo-414171.jpeg');
+    background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSoeOOSOfog9c9gGWoHDDRBactC9HaUco261lMDEDoZlqOWGEgEJ49yD1aHS1SQNUtENfA&usqp=CAU');
   background-size:cover;
         -webkit-animation: slidein 100s;
         animation: slidein 100s;
@@ -41,8 +41,6 @@ to {background-position: -100px 0px;background-size:2750px;}
   border-radius: 3px;
 }
 .center h1{
-    margin-top: -700px;
-    margin-right: -520px;
     text-align:center;
     color:white;
     font-family: 'Source Code Pro', monospace;
@@ -55,27 +53,66 @@ form {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;;
+    align-items: center;
 }
 
 label{
     padding: 10px;
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    font-size: 22px;
+    font-size: 50px;
 }
 textarea{
-    background-color: transparent;
+    background-color: #9767b1;
     border: 2px solid #000000;
+    border-radius: 1em;
     color: #000000;
     font-size: 16px;
+    padding: 10px;
 }
 input{
     width: 90%;
     background: white;
     border: 1px solid #000000;
-    border-radius: 5px 5px 5px 5px;
+    border-radius: 30em;
     color: #393939;
     font-size: 12px;
     padding: 10px;
     margin: 5px;
+}
+
+.boton{
+    background: #a43add;
+    color: rgb(0, 0, 0);
+    width: 9em;
+    height: 3em;
+    border-radius: 30em;
+    font-size: 15px;
+    font-family: inherit;
+    border:none;
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+    z-index: 1;
+    box-shadow: 6px 6px 12px #000000;
+}
+.boton::before {
+    content:'';
+    width: 0;
+    height: 3rem;
+    border-radius: 30em;
+    position: absolute;
+    top: 0; 
+    left: 0;
+    background-image: linear-gradient(to right, #d80fc1 0%, #e62727 100%);
+    transition: .5s ease;
+    display: block;
+    z-index: -1;
+}
+.boton:hover::before{
+    width: 9em;
+}
+
+.respuesta {
+    margin-bottom: 600px;
+    font-size: 20px;
 }
